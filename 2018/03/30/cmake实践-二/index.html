@@ -79,19 +79,26 @@
 
 
 
-<meta name="description" content="更加工程化的HelloWorlddemo过程 在centos系统的任意位置处创建cmake_learning文件夹:     更加工程化的HelloWorld之后，我们都将采用外部构建的方式，构建目录是工程目录下的build目录       为了看起来更佳工程化，我们需要：     为工程添加一个子目录src，用来放置工程源代码； 添加一个子目录doc，用来放置这个工程的文档hello.txt；">
+<meta name="description" content="更加工程化的HelloWorld之后，我们都将采用外部构建的方式，构建目录是工程目录下的build目录       为了看起来更佳工程化，我们需要：     为工程添加一个子目录src，用来放置工程源代码； 添加一个子目录doc，用来放置这个工程的文档hello.txt； 在工程目录添加文本文件COPYRIGHT, README； 在工程目录添加一个runhello.sh脚本，用来调用hello二">
 <meta name="keywords" content="c++实践">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cmake实践(二)">
 <meta property="og:url" content="http://yoursite.com/2018/03/30/cmake实践-二/index.html">
 <meta property="og:site_name" content="JYJatBUPT&#39;s Blog">
-<meta property="og:description" content="更加工程化的HelloWorlddemo过程 在centos系统的任意位置处创建cmake_learning文件夹:     更加工程化的HelloWorld之后，我们都将采用外部构建的方式，构建目录是工程目录下的build目录       为了看起来更佳工程化，我们需要：     为工程添加一个子目录src，用来放置工程源代码； 添加一个子目录doc，用来放置这个工程的文档hello.txt；">
+<meta property="og:description" content="更加工程化的HelloWorld之后，我们都将采用外部构建的方式，构建目录是工程目录下的build目录       为了看起来更佳工程化，我们需要：     为工程添加一个子目录src，用来放置工程源代码； 添加一个子目录doc，用来放置这个工程的文档hello.txt； 在工程目录添加文本文件COPYRIGHT, README； 在工程目录添加一个runhello.sh脚本，用来调用hello二">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2018/03/30/cmake实践-二/4.jpg">
-<meta property="og:updated_time" content="2018-03-30T03:39:21.326Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/30/cmake实践-二/5.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/03/30/cmake实践-二/6.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/03/30/cmake实践-二/7.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/03/30/cmake实践-二/8.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/03/30/cmake实践-二/9.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/03/30/cmake实践-二/10.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/03/30/cmake实践-二/11.jpg">
+<meta property="og:updated_time" content="2018-03-30T04:48:16.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cmake实践(二)">
-<meta name="twitter:description" content="更加工程化的HelloWorlddemo过程 在centos系统的任意位置处创建cmake_learning文件夹:     更加工程化的HelloWorld之后，我们都将采用外部构建的方式，构建目录是工程目录下的build目录       为了看起来更佳工程化，我们需要：     为工程添加一个子目录src，用来放置工程源代码； 添加一个子目录doc，用来放置这个工程的文档hello.txt；">
+<meta name="twitter:description" content="更加工程化的HelloWorld之后，我们都将采用外部构建的方式，构建目录是工程目录下的build目录       为了看起来更佳工程化，我们需要：     为工程添加一个子目录src，用来放置工程源代码； 添加一个子目录doc，用来放置这个工程的文档hello.txt； 在工程目录添加文本文件COPYRIGHT, README； 在工程目录添加一个runhello.sh脚本，用来调用hello二">
 <meta name="twitter:image" content="http://yoursite.com/2018/03/30/cmake实践-二/4.jpg">
 
 
@@ -387,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,044
+                  893
                 </span>
               
 
@@ -412,11 +419,7 @@
       
 
       
-        <h1 id="更加工程化的HelloWorld"><a href="#更加工程化的HelloWorld" class="headerlink" title="更加工程化的HelloWorld"></a>更加工程化的HelloWorld</h1><h2 id="demo过程"><a href="#demo过程" class="headerlink" title="demo过程"></a>demo过程</h2><ul>
-<li>在centos系统的任意位置处创建cmake_learning文件夹:  </li>
-<li><pre><code></code></pre></li>
-</ul>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h1 id="更加工程化的HelloWorld-1"><a href="#更加工程化的HelloWorld-1" class="headerlink" title="更加工程化的HelloWorld"></a>更加工程化的HelloWorld</h1><p>之后，我们都将采用外部构建的方式，构建目录是工程目录下的<strong>build目录</strong>      </p>
+        <h1 id="更加工程化的HelloWorld"><a href="#更加工程化的HelloWorld" class="headerlink" title="更加工程化的HelloWorld"></a>更加工程化的HelloWorld</h1><p>之后，我们都将采用外部构建的方式，构建目录是工程目录下的<strong>build目录</strong>      </p>
 <p>为了看起来更佳工程化，我们需要：   </p>
 <ul>
 <li>为工程添加一个子目录src，用来放置工程源代码；</li>
@@ -427,7 +430,7 @@
 <li>最终安装这些文件：将hello二进制与runhello.sh安装至/usr/bin，将doc目录<br>的内容以及COPYRIGHT/README安装到/usr/share/doc/cmake/t2；</li>
 </ul>
 <h2 id="语法解释"><a href="#语法解释" class="headerlink" title="语法解释"></a>语法解释</h2><h3 id="ADD-SUBDIRECTORY指令"><a href="#ADD-SUBDIRECTORY指令" class="headerlink" title="ADD_SUBDIRECTORY指令"></a>ADD_SUBDIRECTORY指令</h3><p><img src="/2018/03/30/cmake实践-二/4.jpg" alt="pic4"> </p>
-<h2 id="demo过程-1"><a href="#demo过程-1" class="headerlink" title="demo过程"></a>demo过程</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>在当前目录下建立t2目录。<br>将上一篇文章中的main.c和CMakeLists.txt拷贝到t2目录中。   </p>
+<h2 id="demo过程"><a href="#demo过程" class="headerlink" title="demo过程"></a>demo过程</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>在当前目录下建立t2目录。<br>将上一篇文章中的main.c和CMakeLists.txt拷贝到t2目录中。   </p>
 <h3 id="添加子目录src"><a href="#添加子目录src" class="headerlink" title="添加子目录src"></a>添加子目录src</h3><pre><code>mkdir src   
 mv main.c src 
 </code></pre> 
@@ -448,95 +451,46 @@ ADD_SUBDIRECTORY(src bin)
 <pre><code>cmake  ..
 make
 </code></pre>
-终端输出为: 
-<pre><code>-- The C compiler identification is GNU 4.8.5
--- The CXX compiler identification is GNU 4.8.5
--- Check for working C compiler: /usr/bin/cc
--- Check for working C compiler: /usr/bin/cc -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Check for working CXX compiler: /usr/bin/c++
--- Check for working CXX compiler: /usr/bin/c++ -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
-CMake Warning (dev) in CMakeLists.txt:
-  No cmake_minimum_required command is present.  A line of code such as
 
-    cmake_minimum_required(VERSION 3.3)
-
-  should be added at the top of the file.  The version specified may be lower
-  if you wish to support older CMake versions for this project.  For more
-  information run "cmake --help-policy CMP0000".
-This warning is for project developers.  Use -Wno-dev to suppress it.
-
--- Configuring done
--- Generating done
--- Build files have been written to: /opt/learningNotes/t2/build
-</code></pre>   
-此时，目标文件hello位于build/bin目录中  
-
-### 换个地方保存目标二进制   
-我们都可以通过SET指令重新定义EXECUTABLE_OUTPUT_PATH和LIBRARY_OUTPUT_PATH变量
-来指定最终的目标二进制的位置(指最终生成的hello或者最终的共享库，不包含编译生成
-的中间文件)  
+<h3 id="换个地方保存目标二进制"><a href="#换个地方保存目标二进制" class="headerlink" title="换个地方保存目标二进制"></a>换个地方保存目标二进制</h3><p>我们都可以通过SET指令重新定义<code>EXECUTABLE_OUTPUT_PATH</code>和<code>LIBRARY_OUTPUT_PATH</code>变量<br>来指定最终的目标二进制的位置(指最终生成的hello或者最终的共享库，不包含编译生成<br>的中间文件)  </p>
 <pre><code>SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
-</code></pre>
-在第一节我们提到了<projectname>_BINARY_DIR和PROJECT_BINARY_DIR变量，他
-们指的编译发生的当前目录，如果是内部编译，就相当于PROJECT_SOURCE_DIR也就是
-工程代码所在目录，如果是外部编译，指的是外部编译所在目录，也就是本例中的build
-目录。  
-所以，上面两个指令分别定义了：
-可执行二进制的输出路径为**build/bin**和库的输出路径为**build/lib**。   
+</code></pre>    
 
-![pic5](cmake实践-二/5.jpg)  
-
-在这个例子里，当然就是指src下的CMakeLists.txt了  
-### 如何安装   
-安装的需要有两种，一种是从代码编译后直接make install安装，一种是打包时的指定目录安装。    
+<p>在第一节我们提到了<code>&lt;projectname&gt;_BINARY_DIR</code>和<code>PROJECT_BINARY_DIR</code>变量，他<br>们指的编译发生的当前目录，如果是内部编译，就相当于<code>PROJECT_SOURCE_DIR</code>也就是<br>工程代码所在目录，如果是外部编译，指的是外部编译所在目录，也就是本例中的<code>build</code><br>目录。<br>所以，上面两个指令分别定义了：<br>可执行二进制的输出路径为<code>build/bin</code>和库的输出路径为<code>build/lib</code>。<br><img src="/2018/03/30/cmake实践-二/5.jpg" alt="pic5"></p>
+<p>在这个例子里，当然就是指src下的CMakeLists.txt了      </p>
+<h3 id="如何安装"><a href="#如何安装" class="headerlink" title="如何安装"></a>如何安装</h3><p>安装的需要有两种，一种是从代码编译后直接make install安装，一种是打包时的指定目录安装。    </p>
 <pre><code>DESTDIR=
 install:
     mkdir -p $(DESTDIR)/usr/bin
     install -m 755 hello $(DESTDIR)/usr/bin
-</code></pre>
-你可以通过:
-make install  
-将hello直接安装到/usr/bin目录，也可以通过make install DESTDIR=/tmp/test   
-将他安装在/tmp/test/usr/bin目录，打包时这个方式经常被使用。
+</code></pre>   
 
-稍微复杂一点的是还需要定义PREFIX，一般autotools工程，会运行这样的指令:
-./configure –prefix=/usr或者./configure --prefix=/usr/local来指定
-PREFIX   
-比如上面的Makefile就可以改写成:
+
+<p>你可以通过<code>make install</code>将<code>hello</code>直接安装到<code>/usr/bin</code>目录，也可以通过<code>make install DESTDIR=/tmp/test</code><br>将他安装在<code>/tmp/test/usr/bin</code>目录，打包时这个方式经常被使用。</p>
+<p>稍微复杂一点的是还需要定义<code>PREFIX</code>，一般<code>autotools</code>工程，会运行这样的指令:<br><code>./configure –prefix=/usr</code>或者<code>./configure --prefix=/usr/local</code>来指定<br><code>PREFIX</code><br>比如上面的Makefile就可以改写成:</p>
 <pre><code>DESTDIR=
 PREFIX=/usr
 install:
     mkdir -p $(DESTDIR)/$(PREFIX)/bin
     install -m 755 hello $(DESTDIR)/$(PREFIX)/bin
-</code></pre>
-### INSTALL指令  
-INSTALL指令用于定义安装规则，安装的内容可以包括目标二进制、动态库、静态库以及
-文件、目录、脚本等。  
-#### 目标文件的安装 
+</code></pre>    
 
-![pic6](cmake实践-二/6.jpg)  
+<h3 id="INSTALL指令"><a href="#INSTALL指令" class="headerlink" title="INSTALL指令"></a>INSTALL指令</h3><p>INSTALL指令用于定义安装规则，安装的内容可以包括目标二进制、动态库、静态库以及<br>文件、目录、脚本等。  </p>
+<h4 id="目标文件的安装"><a href="#目标文件的安装" class="headerlink" title="目标文件的安装"></a>目标文件的安装</h4><p><img src="/2018/03/30/cmake实践-二/6.jpg" alt="pic6">  </p>
+<p><img src="/2018/03/30/cmake实践-二/7.jpg" alt="pic7"> </p>
+<h4 id="普通文件的安装"><a href="#普通文件的安装" class="headerlink" title="普通文件的安装"></a>普通文件的安装</h4><h4 id="目录的安装"><a href="#目录的安装" class="headerlink" title="目录的安装"></a>目录的安装</h4><h4 id="非目标文件的可执行程序安装-比如脚本之类"><a href="#非目标文件的可执行程序安装-比如脚本之类" class="headerlink" title="非目标文件的可执行程序安装(比如脚本之类)"></a>非目标文件的可执行程序安装(比如脚本之类)</h4><p>###修改Helloworld支持安装###<br><img src="/2018/03/30/cmake实践-二/8.jpg" alt="pic8"><br>首先我们先补上为添加的文件。<br>添加doc目录及文件:   </p>
+<pre><code>cd /backup/cmake/t2  
+mkdir doc  
+vim doc/hello.txt  
+</code></pre>         
 
-![pic7](cmake实践-二/7.jpg) 
-
-#### 普通文件的安装  
-#### 目录的安装  
-#### 非目标文件的可执行程序安装(比如脚本之类)
-
-
-
----
+<p>随便填写一些内容并保存在工程目录添加<code>runhello.sh</code>脚本，内容为：<code>hello</code><br>添加工程目录中的<code>COPYRIGHT</code>和<code>README</code><br><code>touch COPYRIGHT</code><br><code>touch README</code><br><img src="/2018/03/30/cmake实践-二/9.jpg" alt="pic9"><br><img src="/2018/03/30/cmake实践-二/10.jpg" alt="pic10">   </p>
+<p>####尝试我们修改的结果<br><img src="/2018/03/30/cmake实践-二/11.jpg" alt="pic11">  </p>
+<hr>
 <pre><code>
 
-</code></pre></projectname>
+</code></pre>
       
     </div>
     
@@ -749,7 +703,7 @@ INSTALL指令用于定义安装规则，安装的内容可以包括目标二进�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#更加工程化的HelloWorld"><span class="nav-number">1.</span> <span class="nav-text">更加工程化的HelloWorld</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#demo过程"><span class="nav-number">1.1.</span> <span class="nav-text">demo过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.2.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更加工程化的HelloWorld-1"><span class="nav-number">2.</span> <span class="nav-text">更加工程化的HelloWorld</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法解释"><span class="nav-number">2.1.</span> <span class="nav-text">语法解释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ADD-SUBDIRECTORY指令"><span class="nav-number">2.1.1.</span> <span class="nav-text">ADD_SUBDIRECTORY指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demo过程-1"><span class="nav-number">2.2.</span> <span class="nav-text">demo过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">2.2.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加子目录src"><span class="nav-number">2.2.2.</span> <span class="nav-text">添加子目录src</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外部编译"><span class="nav-number">2.2.3.</span> <span class="nav-text">外部编译</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#更加工程化的HelloWorld"><span class="nav-number">1.</span> <span class="nav-text">更加工程化的HelloWorld</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法解释"><span class="nav-number">1.1.</span> <span class="nav-text">语法解释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ADD-SUBDIRECTORY指令"><span class="nav-number">1.1.1.</span> <span class="nav-text">ADD_SUBDIRECTORY指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demo过程"><span class="nav-number">1.2.</span> <span class="nav-text">demo过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">1.2.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加子目录src"><span class="nav-number">1.2.2.</span> <span class="nav-text">添加子目录src</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外部编译"><span class="nav-number">1.2.3.</span> <span class="nav-text">外部编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#换个地方保存目标二进制"><span class="nav-number">1.2.4.</span> <span class="nav-text">换个地方保存目标二进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何安装"><span class="nav-number">1.2.5.</span> <span class="nav-text">如何安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INSTALL指令"><span class="nav-number">1.2.6.</span> <span class="nav-text">INSTALL指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#目标文件的安装"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">目标文件的安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#普通文件的安装"><span class="nav-number">1.2.6.2.</span> <span class="nav-text">普通文件的安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目录的安装"><span class="nav-number">1.2.6.3.</span> <span class="nav-text">目录的安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非目标文件的可执行程序安装-比如脚本之类"><span class="nav-number">1.2.6.4.</span> <span class="nav-text">非目标文件的可执行程序安装(比如脚本之类)</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
