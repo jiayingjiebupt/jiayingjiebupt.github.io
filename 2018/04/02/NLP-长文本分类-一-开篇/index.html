@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="C++实践," />
+  <meta name="keywords" content="NLP实践," />
 
 
 
@@ -79,43 +79,23 @@
 
 
 
-<meta name="description" content="回顾   线程的访问权限    线程调度线程调度大多从优先级调度和轮转法2个方面设计策略在Linux下与线程相关的操作可以通过pthread库来实现，相关参考1IO密集型线程: 频繁等待的线程CPU密集型线程: 很少等待的线程IO密集型线程比cpu密集型线程容易得到优先级的提升    Linux下的多线程   线程安全同步与锁注意二元信号量和多元信号量     信号量、互斥量、临界区、读写锁、条件">
-<meta name="keywords" content="C++实践">
+<meta name="description" content="开篇词文本分类是NLP领域最基本和最常见的任务之一，同时它也是检验众多nlp算法模型的重要手段。本项目注重应用各种经典的机器学习模型(含深度学习模型)对单标签新闻进行分类的方法，同时注重分析总结各种算法模型的优缺点     语料准备在做新闻分类前，首先需要准备好新闻语料，通常有2种途径：   要么使用网上公开的新闻语料，但数据量通常不大，比如: 搜狐新闻数据 网易分类文本数据 THUCNews中文">
+<meta name="keywords" content="NLP实践">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[程序员的自我修养--链接、装载与库]笔记(一)">
-<meta property="og:url" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/index.html">
+<meta property="og:title" content="[NLP][长文本分类](一)开篇">
+<meta property="og:url" content="http://yoursite.com/2018/04/02/NLP-长文本分类-一-开篇/index.html">
 <meta property="og:site_name" content="JYJatBUPT&#39;s Blog">
-<meta property="og:description" content="回顾   线程的访问权限    线程调度线程调度大多从优先级调度和轮转法2个方面设计策略在Linux下与线程相关的操作可以通过pthread库来实现，相关参考1IO密集型线程: 频繁等待的线程CPU密集型线程: 很少等待的线程IO密集型线程比cpu密集型线程容易得到优先级的提升    Linux下的多线程   线程安全同步与锁注意二元信号量和多元信号量     信号量、互斥量、临界区、读写锁、条件">
+<meta property="og:description" content="开篇词文本分类是NLP领域最基本和最常见的任务之一，同时它也是检验众多nlp算法模型的重要手段。本项目注重应用各种经典的机器学习模型(含深度学习模型)对单标签新闻进行分类的方法，同时注重分析总结各种算法模型的优缺点     语料准备在做新闻分类前，首先需要准备好新闻语料，通常有2种途径：   要么使用网上公开的新闻语料，但数据量通常不大，比如: 搜狐新闻数据 网易分类文本数据 THUCNews中文">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/1.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/2.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/3.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/4.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/5.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/6.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/7.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/8.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/9.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/10.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/11.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/12.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/13.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/14.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/15.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/16.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/17.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/18.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/19.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/20.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/21.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/22.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/23.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/24.jpg">
-<meta property="og:updated_time" content="2018-03-30T10:40:30.612Z">
+<meta property="og:image" content="http://yoursite.com/2018/04/02/NLP-长文本分类-一-开篇/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/02/NLP-长文本分类-一-开篇/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/02/NLP-长文本分类-一-开篇/4.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/02/NLP-长文本分类-一-开篇/5.jpg">
+<meta property="og:updated_time" content="2018-04-02T14:37:18.169Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[程序员的自我修养--链接、装载与库]笔记(一)">
-<meta name="twitter:description" content="回顾   线程的访问权限    线程调度线程调度大多从优先级调度和轮转法2个方面设计策略在Linux下与线程相关的操作可以通过pthread库来实现，相关参考1IO密集型线程: 频繁等待的线程CPU密集型线程: 很少等待的线程IO密集型线程比cpu密集型线程容易得到优先级的提升    Linux下的多线程   线程安全同步与锁注意二元信号量和多元信号量     信号量、互斥量、临界区、读写锁、条件">
-<meta name="twitter:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/1.jpg">
+<meta name="twitter:title" content="[NLP][长文本分类](一)开篇">
+<meta name="twitter:description" content="开篇词文本分类是NLP领域最基本和最常见的任务之一，同时它也是检验众多nlp算法模型的重要手段。本项目注重应用各种经典的机器学习模型(含深度学习模型)对单标签新闻进行分类的方法，同时注重分析总结各种算法模型的优缺点     语料准备在做新闻分类前，首先需要准备好新闻语料，通常有2种途径：   要么使用网上公开的新闻语料，但数据量通常不大，比如: 搜狐新闻数据 网易分类文本数据 THUCNews中文">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/02/NLP-长文本分类-一-开篇/2.jpg">
 
 
 
@@ -145,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/02/NLP-长文本分类-一-开篇/"/>
 
 
 
@@ -154,15 +134,15 @@
 <link href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" rel="stylesheet">
 <script>
     (function(){
-        if(''){
-            if (prompt('猜猜密码:') !== ''){
+        if('123wan'){
+            if (prompt('猜猜密码:') !== '123wan'){
                 alert('Wrong！');
                 history.back();
             }
         }
     })();
 </script>
-  <title>[程序员的自我修养--链接、装载与库]笔记(一) | JYJatBUPT's Blog</title>
+  <title>[NLP][长文本分类](一)开篇 | JYJatBUPT's Blog</title>
   
 
 
@@ -344,7 +324,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/02/NLP-长文本分类-一-开篇/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JYJatBUPT">
@@ -361,7 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[程序员的自我修养--链接、装载与库]笔记(一)</h1>
+          <h1 class="post-title" itemprop="name headline">[NLP][长文本分类](一)开篇</h1>
         
 
         <div class="post-meta">
@@ -373,8 +353,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T18:36:57+08:00">
-                2018-03-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-02T19:20:25+08:00">
+                2018-04-02
               </time>
             
 
@@ -410,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  715
+                  2,437
                 </span>
               
 
@@ -435,20 +415,375 @@
       
 
       
-        <h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/1.jpg" alt="pic"><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/2.jpg" alt="pic">  </p>
-<h2 id="线程的访问权限"><a href="#线程的访问权限" class="headerlink" title="线程的访问权限"></a>线程的访问权限</h2><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/3.jpg" alt="pic">   </p>
-<h2 id="线程调度"><a href="#线程调度" class="headerlink" title="线程调度"></a>线程调度</h2><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/4.jpg" alt="pic"><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/5.jpg" alt="pic"><br>线程调度大多从<code>优先级调度</code>和<code>轮转法</code>2个方面设计策略<br>在Linux下与线程相关的操作可以通过pthread库来实现，<a href="https://blog.csdn.net/liujiabin076/article/details/53456962" target="_blank" rel="noopener">相关参考1</a><br>IO密集型线程: 频繁等待的线程<br>CPU密集型线程: 很少等待的线程<br>IO密集型线程比cpu密集型线程容易得到优先级的提升<br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/6.jpg" alt="pic">   </p>
-<h2 id="Linux下的多线程"><a href="#Linux下的多线程" class="headerlink" title="Linux下的多线程"></a>Linux下的多线程</h2><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/7.jpg" alt="pic"><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/8.jpg" alt="pic"><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/9.jpg" alt="pic">  </p>
-<h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><h3 id="同步与锁"><a href="#同步与锁" class="headerlink" title="同步与锁"></a>同步与锁</h3><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/10.jpg" alt="pic"><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/11.jpg" alt="pic"><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/12.jpg" alt="pic"><br>注意<code>二元信号量</code>和<code>多元信号量</code>    </p>
-<h4 id="信号量、互斥量、临界区、读写锁、条件变量"><a href="#信号量、互斥量、临界区、读写锁、条件变量" class="headerlink" title="信号量、互斥量、临界区、读写锁、条件变量"></a><code>信号量</code>、<code>互斥量</code>、<code>临界区</code>、<code>读写锁</code>、<code>条件变量</code></h4><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/13.jpg" alt="pic"><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/14.jpg" alt="pic"><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/15.jpg" alt="pic"><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/16.jpg" alt="pic">    </p>
-<h3 id="可重入函数是线程安全的"><a href="#可重入函数是线程安全的" class="headerlink" title="可重入函数是线程安全的"></a>可重入函数是线程安全的</h3><p><code>可重入函数满足条件:</code><br>(1)不使用全局变量或静态变量；<br>(2)不使用用malloc或者new开辟出的空间；<br>(3)不调用不可重入函数；<br>(4)不返回静态或全局数据，所有数据都有函数的调用者提供；<br>(5)使用本地数据，或者通过制作全局数据的本地拷贝来保护全局数据；   </p>
-<p><code>不可重入函数符合以下条件之一</code><br>(1)调用了malloc/free函数，因为malloc函数是用全局链表来管理堆的。<br>(2)调用了标准I/O库函数，标准I/O库的很多实现都以不可重入的方式使用全局数据结构。<br>(3)可重入体内使用了静态的数据结构。   </p>
-<h4 id="可重入函数与线程安全的区别与联系"><a href="#可重入函数与线程安全的区别与联系" class="headerlink" title="可重入函数与线程安全的区别与联系"></a>可重入函数与线程安全的区别与联系</h4><p><code>联系：</code><br>函数可以是可重入的，是线程安全的，或者二者皆是，或者二者皆非。不可重入的函数不能由多个线程使用。另外，或许不可能让某个不可重入的函数是线程安全的。   </p>
-<p><code>区别：</code><br>(1)可重入函数是线程安全函数的一种，其特点在于它们被多个线程调用时，不会引用任何共享数据。<br>(2)线程安全是在多个线程情况下引发的，而可重入函数可以在只有一个线程的情况下来说。<br>(3)<code>线程安全不一定是可重入的，而可重入函数则一定是线程安全的。</code><br>(4)如果一个函数中有全局变量，那么这个函数既不是线程安全也不是可重入的。<br>(5)如果将对临界资源的访问加上锁，则这个函数是线程安全的，但如果这个重入函数若锁还未释放则会产生死锁，因此是不可重入的。<br>(6)线程安全函数能够使不同的线程访问同一块地址空间，而可重入函数要求不同的执行流对数据的操作互不影响使结果是相同的。   </p>
-<h3 id="过度优化"><a href="#过度优化" class="headerlink" title="过度优化"></a>过度优化</h3><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/17.jpg" alt="pic"><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/18.jpg" alt="pic">   </p>
-<h2 id="3种线程模型"><a href="#3种线程模型" class="headerlink" title="3种线程模型"></a>3种线程模型</h2><h3 id="1对1模型"><a href="#1对1模型" class="headerlink" title="1对1模型"></a>1对1模型</h3><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/19.jpg" alt="pic"><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/20.jpg" alt="pic"><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/21.jpg" alt="pic">  </p>
-<h3 id="多对1模型"><a href="#多对1模型" class="headerlink" title="多对1模型"></a>多对1模型</h3><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/22.jpg" alt="pic">   </p>
-<h3 id="多对多模型"><a href="#多对多模型" class="headerlink" title="多对多模型"></a>多对多模型</h3><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/23.jpg" alt="pic"><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/24.jpg" alt="pic">  </p>
+        <h1 id="开篇词"><a href="#开篇词" class="headerlink" title="开篇词"></a>开篇词</h1><font size="4" color="blue"><strong>文本分类</strong>是NLP领域最基本和最常见的任务之一，同时它也是检验众多nlp算法模型的重要手段。</font><br><font size="4" color="red">本项目注重应用各种经典的机器学习模型(含深度学习模型)对单标签新闻进行分类的方法，同时注重分析总结各种算法模型的优缺点</font>  
+
+
+<h1 id="语料准备"><a href="#语料准备" class="headerlink" title="语料准备"></a>语料准备</h1><p>在做新闻分类前，首先需要准备好<strong>新闻语料</strong>，通常有2种途径： </p>
+<ul>
+<li>要么使用网上公开的新闻语料，但数据量通常不大，比如: <a href="http://www.sogou.com/labs/resource/cs.php" target="_blank" rel="noopener">搜狐新闻数据</a> <a href="http://www.datatang.com/data/11965" target="_blank" rel="noopener">网易分类文本数据</a> <a href="http://thuctc.thunlp.org/" target="_blank" rel="noopener">THUCNews中文文本数据集</a> 等等   </li>
+<li>要么在各大新闻网站采用爬虫技术爬取新闻语料，姿势正确的话想要多少数据量就能爬取多少数据量    </li>
+</ul>
+<p><font size="4">本项目设计采用<font color="blue">50W条新闻语料</font>做<code>训练集</code>，<font color="blue">50W条新闻语料</font>做<code>测试集</code>，对<font color="blue">10个新闻类别</font>进行分类。<br>由于现有语料无法满足需求，所以决定自制爬虫来收集这<font color="blue">100w条新闻语料</font>   </font></p>
+<h2 id="目标网站"><a href="#目标网站" class="headerlink" title="目标网站"></a>目标网站</h2><p>考虑到爬虫技术与各大网站反爬虫技术的彼此争斗，同时需要短时间内大量爬取到新闻语料，笔者决定在<a href="https://www.chinanews.com/" target="_blank" rel="noopener">中国新闻网</a>进行新闻语料的爬取和收集。  </p>
+<h2 id="爬取思路"><a href="#爬取思路" class="headerlink" title="爬取思路"></a>爬取思路</h2><p>先从首页进去,点击<code>滚动</code>栏目<br><img src="/2018/04/02/NLP-长文本分类-一-开篇/2.jpg" alt=""><br>再点击各个新闻类别对应的栏目，如<code>IT</code><br><img src="/2018/04/02/NLP-长文本分类-一-开篇/3.jpg" alt=""><br>此时，可以看到左侧为<code>查看往日回顾</code>栏目，右侧为<code>IT</code>类别下的若干新闻<br><img src="/2018/04/02/NLP-长文本分类-一-开篇/4.jpg" alt=""><br>随机在<code>查看往日回顾</code>栏目中挑选几个不同年月日的时间，并注意观察此时对应页面的URL，比如以下这3条:<br><code>http://www.chinanews.com/scroll-news/it/2015/0408/news.shtml</code><br><code>http://www.chinanews.com/scroll-news/it/2016/0405/news.shtml</code><br><code>http://www.chinanews.com/scroll-news/it/2017/0411/news.shtml</code>       
+　　　    </p>
+<p>聪明的你一定发现，不同的IT类新闻合集页面对应的URL<strong>只是在日期部分有差异</strong>，<br>接着我们随便点进去一条具体的新闻页面，比如下面这个<br><img src="/2018/04/02/NLP-长文本分类-一-开篇/5.jpg" alt=""><br>此时发现，我们的目标不就是爬取100W条类似这样的新闻语料吗？<br>于是爬取这100w条新闻的整体框架就形成了。<br>我们分成2步来做:    </p>
+<h3 id="step-1-爬取100w条URL链接"><a href="#step-1-爬取100w条URL链接" class="headerlink" title="step 1 爬取100w条URL链接"></a>step 1 爬取100w条URL链接</h3><p>首先，确定要爬取的10个新闻类别，每个类别分别大致爬取10W条URL链接并分别保存。笔者最终确定的10个类别为:    </p>
+<p><font color="blue" size="4"><code>财经</code>、<code>房产</code>、<code>IT</code>、<code>军事</code>、<code>能源</code>、<code>汽车</code>、<code>健康</code>、<code>体育</code>、<code>文化</code>、<code>娱乐</code>   </font><br>接着，利用<font color="red">不同日期下的新闻合集页面对应的URL<strong>只是在日期部分有差异</strong></font>这一特性，收集不同年、月、日下的新闻URL链接<br>python3.5 代码如下:</p>
+<pre><code> //通过改变控制参数，爬取100w条URL链接
+# -*- encoding: utf-8 -*-
+from bs4 import BeautifulSoup
+import urllib.request
+import re
+import sys
+import codecs
+import csv
+import time
+from requests.exceptions import RequestException
+import socket
+
+# global variable
+CAT='yl'    #设置欲爬取的新闻类别，当前为"娱乐"
+
+year = '2014'  #设置欲爬取年份，当前为2014年份 
+#monthList =  ['06','07','08','09','10','11','12']
+monthList =  ['04','05','06','07','08','09','10','11','12'] #设置欲爬取月份
+#monthList=['11','12']
+dayList=['01','02','03','04','05','06','07','08','09','10','11','12','13','14',
+'15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30']
+#dayList=["01","02","03","04","05","06","07","08","09"]
+#dayList=["19"] # 测试单日用
+
+news1  = list()  # 国际
+news2  = list()  # 社会
+news3  = list()  # 国内
+news4  = list()  # 文化
+news5  = list()  # 房产
+news6  = list()  # 体育
+news7  = list()  # 财经
+news8  = list()  # 军事
+news9  = list()  # 娱乐
+news10 = list()  # 证券
+news11 = list()  # 汽车
+news12 = list()  # 金融
+news13 = list()  # I T
+news14 = list()  # 生活
+news15 = list()  # 教育
+news16 = list()  # 法治
+
+CLASS_DICT={ 
+    "国际":news1,
+    "国    际":news1,
+    "社会":news2,
+    "社    会":news2,
+    "国内":news3,
+    "国    内":news3,
+    "文化":news4,
+    "文    化":news4,
+    "房产":news5,
+    "[房产]":news5,
+    "体育":news6,
+    "体    育":news6,
+    "财经":news7,
+    "财    经":news7,
+    "[军事]":news8,
+    "娱乐":news9,
+    "[娱乐]":news9,
+    "证券":news10,
+    "证    券":news10,
+    "汽车":news11,
+    "[汽车]":news11,
+    "金融":news12,
+    "[金融]":news12,
+    "I  T":news13,
+    "I      T":news13,
+    "生活":news14,
+    "生    活":news14,
+    "能源":news15,
+    "[能源]":news15,
+    "法治":news16,
+    "法    治":news16,
+    }
+
+
+def download(url):
+    print(url)
+    req = urllib.request.Request(url)
+    try:
+        response=urllib.request.urlopen(req,timeout=2) #可以设置超时时间控制 例如：0.5s  urlopen(req,timeout=0.5)
+        html =response.read().decode('gbk')  // 必须定义好解析格`gbk`
+    except urllib.error.HTTPError as e:
+        html = None
+        print('No valid url')
+    except socket.timeout as e:
+        html = None
+        print('No valid url')
+    except RequestException as e:
+        html = None
+        print('No valid url')
+    except Exception:
+        html = None
+        print('No valid url')
+    return html
+
+def getTagByClass(bsobj, tagName):
+    #     print 'Get %s by class:%s'%(tagName,classValue)
+    try:
+        value = bsobj.findAll(tagName,style=None)  #过滤掉 style不为空的p标签
+    except AttributeError as e:
+        return None
+    return value
+
+def crawSingleURL(url,catalog,TEXT_NUMBER):
+    html = download(url)
+    if (html == None):
+        return False
+    soup = BeautifulSoup(html, "lxml")
+    # 获取文章内容
+    Contents = getTagByClass(soup, "p")
+    # 提取文章内容
+    content = str()
+    # 获取每篇预测的URL
+    for item in Contents:
+        link = item.find("a")  # item.find("a",href=re.compile("^https://headlines.yahoo.co.jp/hl*"))
+        if link is None:
+            # newpage =  link.attrs['href']
+            content += item.get_text() + '\n'
+
+    # print(content)
+    # 写入CSV  需要预先在程序相同的目录下创建files文件夹
+    output = open("E:/TEXTCRAWER/" + catalog + "/" + str(TEXT_NUMBER) + ".txt", 'w')
+    try:
+        writer = output.write(content)
+    finally:
+        output.close()
+    # print("ok! url=\"", url, "\"","text OUTPUT:", TEXT_NUMBER)
+    return True
+
+def MAP(str):
+    return CLASS_DICT.get(str,"NoValid")
+
+def runCrawler(year,monthList,CAT):
+    # 生成要抓取的url地址
+    # Demo: http://www.chinanews.com/scroll-news/2017/1118/news.shtml
+
+    urlPrefix='http://www.chinanews.com/scroll-news/'
+    urlSuffix='/news.shtml'
+    for month in monthList:
+        for day in dayList:
+            // 这里生成要抓取的URL
+            newURL=urlPrefix+CAT+'/'+year+'/'+month+day+urlSuffix
+            html=download(newURL)
+            time.sleep(1)  // 控制延时 以秒为单位
+            if (html == None):  // 跳过无效html
+                continue
+            print("process Year: " + year + " Month: " + month + " Day: " + day + " ..."+"Tag: " +CAT)
+            soup = BeautifulSoup(html, "lxml")
+            # 获取本滚动页面的文章内容
+            Contents = getTagByClass(soup, "li")
+
+            for item in Contents:
+                #link = item.findAll("dd_lm","dd_bt")
+                if (len(item)==4):
+                    #print(link[0].text)
+                    res=MAP(item.contents[0].text)
+                    if res != "NoValid":
+                        res.append(item.contents[2].contents[0].attrs["href"])
+        saveURL(month,CAT)
+        news1.clear()
+        news2.clear()
+        news3.clear()
+        news4.clear()
+        news5.clear()
+        news6.clear()
+        news7.clear()
+        news8.clear()
+        news9.clear()
+        news10.clear()
+        news11.clear()
+        news12.clear()
+        news13.clear()
+        news14.clear()
+        news15.clear()
+        news16.clear()
+
+def saveURL(month,CAT):
+    #'mil/hd2011/2012/11-21/149641.shtml'
+    ValidPRefix='chinanews.com/'+'yl'+'/'
+    suffex_str='/'+CAT+'/'
+    newPath="E:/TEXTCRAWER"+suffex_str+year+"/URL"+str(month)+".txt" # 设置存在E盘下
+    # 写入CSV  需要预先在程序相同的目录下创建各个文件夹
+    output = open(newPath, 'w')
+    for url in Which(CAT):
+        if url.find(ValidPRefix) != -1:
+            writer = output.write(url+'\n')
+    output.close()
+
+def Who(container):
+    if container == news1:
+        return '/gj/'
+    if container == news2:
+        return '/sh/'
+    if container == news3:
+        return '/gn/'
+    if container == news4:
+        return '/cul/'
+    if container == news5:
+        return '/house/'
+    if container == news6:
+        return '/ty/'
+    if container == news7:
+        return '/cj/'
+    if container == news8:
+        return '/mil/'
+    if container == news9:
+        return '/yl/'
+    if container == news10:
+        return '/stock/'
+    if container == news11:
+        return '/auto/'
+    if container == news12:
+        return '/fortune/'
+    if container == news13:
+        return '/it/'
+    if container == news14:
+        return '/life/'
+    if container == news15:
+        return '/ny/'
+    if container == news16:
+        return '/fz/'
+    else:
+        return '/business/'
+
+def Which(CAT):
+    if CAT == 'gj':
+        return news1
+    if CAT == 'sh':
+        return news2
+    if CAT == 'gn':
+        return news3
+    if CAT == 'cul':
+        return news4
+    if CAT == 'house' or CAT == 'estate':
+        return news5
+    if CAT == 'ty':
+        return news6
+    if CAT == 'cj':
+        return news7
+    if CAT == 'mil':
+        return news8
+    if CAT == 'yl':
+        return news9
+    if CAT == 'stock':
+        return news10
+    if CAT == 'auto':
+        return news11
+    if CAT == 'fortune':
+        return news12
+    if CAT == 'it':
+        return news13
+    if CAT == 'life':
+        return news14
+    if CAT == 'edu' or CAT == 'ny':
+        return news15
+    if CAT == 'fz':
+        return news16
+
+def main():
+    runCrawler(year,monthList,CAT)
+    #a='http://finance.chinanews.com/house/2013/01-02/4452930.shtml'.find('ghinanews.com/house/')
+
+if __name__ == '__main__':
+    main()
+</code></pre>   
+
+
+<p>以上代码，大体分为设置欲爬取的年月日信息、利用规则生成<code>URL</code>、通过<code>request</code>请求页面、再利用<code>BeautifulSoup</code>解析返回的页面信息、提取所有的具体新闻的URL链接并保存这些环节，这里不做过多解释，可以看注释部分。笔者写的代码普适性虽不高，但重在实用。</p>
+<h3 id="step-2-爬取100W条具体新闻"><a href="#step-2-爬取100W条具体新闻" class="headerlink" title="step 2 爬取100W条具体新闻"></a>step 2 爬取100W条具体新闻</h3><p>第一步得到了10个类别的各10w条URL链接，并分别保存在10个txt文件中，<br>接下来，就是从这10个文本中逐行读取每条URL链接，并请求页面返回每条新闻的内容，解析并保存正文内容<br>python 3.5 代码如下:</p>
+<pre><code>
+# -*- encoding: utf-8 -*-
+from bs4 import BeautifulSoup
+import urllib.request
+import re
+import sys
+import codecs
+import csv
+import time
+from lxml import etree
+from requests.exceptions import RequestException
+import socket
+
+def download(url):
+    req = urllib.request.Request(url)
+    try:
+        response=urllib.request.urlopen(req,timeout=10) #可以设置超时时间控制 例如：0.5s  urlopen(req,timeout=0.5)
+        html =response.read().decode('gbk')
+    except urllib.error.HTTPError as e:
+        html = None
+        print('No valid url')
+    except socket.timeout as e:
+        html = None
+        print('No valid url')
+    except RequestException as e:
+        html = None
+        print('No valid url')
+    except Exception:
+        html = None
+        print('Time out')
+    return html
+
+def getTagByClass(bsobj, tagName):
+    #     print 'Get %s by class:%s'%(tagName,classValue)
+    try:
+        value = bsobj.findAll(tagName,style=None)  #过滤掉 style不为空的p标签
+    except AttributeError as e:
+        return None
+    return value
+
+def crawSingleURL(filePath,outPath,TEXT_NUMBER,BUGG):
+    with open(filePath) as file:
+        for url in file:
+
+            #url='http://finance.chinanews.com/auto/2014/05-30/6230919.shtml'
+            url = "http://www.chinanews.com" + url
+            html = download(url)
+            if (html == None):
+                continue
+            #soup = BeautifulSoup(html, "lxml")
+            selector=etree.HTML(html)
+            #Contents=selector.xpath("//div[@class=\"left_zw\"]//p/text()")
+            Contents = selector.xpath("//div[@class=\"left_zw\"]//p/text()")
+            if len(Contents) == 0 :
+                BUGG=BUGG+1
+                if(BUGG>600):
+                    print('Something wrong with this url',url," Number: ",TEXT_NUMBER)
+                    exit(-1)
+                    break
+                else:
+                    continue
+            with  open(outPath + "/" + str(TEXT_NUMBER) + ".txt", 'w', encoding='utf-8') as writer:
+                for item in Contents:
+                        writer.write(str(item) + '\n')
+
+            TEXT_NUMBER=TEXT_NUMBER+1
+            if TEXT_NUMBER%50 == 0:
+                print("ok! url=\"", url, "\"","text OUTPUT:", TEXT_NUMBER)
+
+
+def main():
+    urlFilePath="E:/TEXTCRAWER/yl/yule.txt"
+    outPath="E:/TEXTCRAWER/yl/corpus"
+    textNUM=0
+    BUGG=0
+    crawSingleURL(urlFilePath,outPath,textNUM,BUGG)
+
+
+if __name__ == '__main__':
+
+</code></pre>
+
+<p>这样，经过上面2个环节，这100W条新闻语料就得到了。<br>当然，实际中笔者是这样做的：先在2台centos云服务器(具体哪个厂商的云服务器就不透露了，免得说笔者打广告啊)上安装anaconda软件并配置为通过浏览器可访问jupyter，然后在jupyter中开启3-5个脚本同时运行上述2个环节中的代码，以此来提高爬取速率。 </p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>作为本项目的开篇，笔者主要阐述了如何为后续算法模型准备足够量的新闻语料。大体上通过2个步骤的爬虫过程来爬取到10个类别共计100W条的新闻语料。<br>在下一篇中，笔者会探讨文本语料的前处理过程。</p>
 
       
     </div>
@@ -478,7 +813,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/" title="[程序员的自我修养--链接、装载与库]笔记(一)">http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/</a>
+    <a href="http://yoursite.com/2018/04/02/NLP-长文本分类-一-开篇/" title="[NLP][长文本分类](一)开篇">http://yoursite.com/2018/04/02/NLP-长文本分类-一-开篇/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -493,7 +828,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C-实践/" rel="tag"><i class="fa fa-tag"></i> C++实践</a>
+            <a href="/tags/NLP实践/" rel="tag"><i class="fa fa-tag"></i> NLP实践</a>
           
         </div>
       
@@ -506,8 +841,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/30/cmake实践-二/" rel="next" title="cmake实践(二)">
-                <i class="fa fa-chevron-left"></i> cmake实践(二)
+              <a href="/2018/03/31/程序员的自我修养-链接、装载与库-笔记-三/" rel="next" title="[程序员的自我修养--链接、装载与库]笔记(三)">
+                <i class="fa fa-chevron-left"></i> [程序员的自我修养--链接、装载与库]笔记(三)
               </a>
             
           </div>
@@ -515,10 +850,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/" rel="prev" title="[程序员的自我修养--链接、装载与库]笔记(二)">
-                [程序员的自我修养--链接、装载与库]笔记(二) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -666,7 +997,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#回顾"><span class="nav-number">1.</span> <span class="nav-text">回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的访问权限"><span class="nav-number">1.1.</span> <span class="nav-text">线程的访问权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程调度"><span class="nav-number">1.2.</span> <span class="nav-text">线程调度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux下的多线程"><span class="nav-number">1.3.</span> <span class="nav-text">Linux下的多线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程安全"><span class="nav-number">1.4.</span> <span class="nav-text">线程安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同步与锁"><span class="nav-number">1.4.1.</span> <span class="nav-text">同步与锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信号量、互斥量、临界区、读写锁、条件变量"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">信号量、互斥量、临界区、读写锁、条件变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可重入函数是线程安全的"><span class="nav-number">1.4.2.</span> <span class="nav-text">可重入函数是线程安全的</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可重入函数与线程安全的区别与联系"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">可重入函数与线程安全的区别与联系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过度优化"><span class="nav-number">1.4.3.</span> <span class="nav-text">过度优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3种线程模型"><span class="nav-number">1.5.</span> <span class="nav-text">3种线程模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1对1模型"><span class="nav-number">1.5.1.</span> <span class="nav-text">1对1模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多对1模型"><span class="nav-number">1.5.2.</span> <span class="nav-text">多对1模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多对多模型"><span class="nav-number">1.5.3.</span> <span class="nav-text">多对多模型</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开篇词"><span class="nav-number">1.</span> <span class="nav-text">开篇词</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语料准备"><span class="nav-number">2.</span> <span class="nav-text">语料准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标网站"><span class="nav-number">2.1.</span> <span class="nav-text">目标网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#爬取思路"><span class="nav-number">2.2.</span> <span class="nav-text">爬取思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#step-1-爬取100w条URL链接"><span class="nav-number">2.2.1.</span> <span class="nav-text">step 1 爬取100w条URL链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step-2-爬取100W条具体新闻"><span class="nav-number">2.2.2.</span> <span class="nav-text">step 2 爬取100W条具体新闻</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
