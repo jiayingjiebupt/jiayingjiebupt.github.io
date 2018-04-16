@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="C++实践," />
+  <meta name="keywords" content="NLP实践," />
 
 
 
@@ -79,47 +79,22 @@
 
 
 
-<meta name="description" content="第二章 编译和链接  被隐藏的过程gcc处理最简单的hello world程序也要分解为4个步骤:      预处理(prepressing) 编译(compilation) 汇编(assembly) 链接(linking)     过程如图所示: 预编译阶段 预编译过程主要处理那些源代码文件中以”#”开头的预编译指令，主要规则如下:hello.i文件部分内容如下: 编译阶段(后文详解) //he">
-<meta name="keywords" content="C++实践">
+<meta name="description" content="待参考这个网站有很多好NLP文章 比如这篇文本情感分类 LDA模型下书目信息分类系统的研究与实现300万知乎多标签文本分类任务经验分享（附源码）    导语在上一篇中笔者准备了100w条新闻语料，接下来进入文本分类的预处理环节。当然，进行文本分类需要遵循一些基本步骤，以下便是笔者总结的文本分类的基本处理框架(持续更新本框架): 预处理阶段分词方案NLP中分词是一项基础技术，分词好坏对后续各项NLP">
+<meta name="keywords" content="NLP实践">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[程序员的自我修养--链接、装载与库]笔记(二)">
-<meta property="og:url" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/index.html">
+<meta property="og:title" content="[NLP][长文本分类](二)语料预处理和特征降维">
+<meta property="og:url" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/index.html">
 <meta property="og:site_name" content="JYJatBUPT&#39;s Blog">
-<meta property="og:description" content="第二章 编译和链接  被隐藏的过程gcc处理最简单的hello world程序也要分解为4个步骤:      预处理(prepressing) 编译(compilation) 汇编(assembly) 链接(linking)     过程如图所示: 预编译阶段 预编译过程主要处理那些源代码文件中以”#”开头的预编译指令，主要规则如下:hello.i文件部分内容如下: 编译阶段(后文详解) //he">
+<meta property="og:description" content="待参考这个网站有很多好NLP文章 比如这篇文本情感分类 LDA模型下书目信息分类系统的研究与实现300万知乎多标签文本分类任务经验分享（附源码）    导语在上一篇中笔者准备了100w条新闻语料，接下来进入文本分类的预处理环节。当然，进行文本分类需要遵循一些基本步骤，以下便是笔者总结的文本分类的基本处理框架(持续更新本框架): 预处理阶段分词方案NLP中分词是一项基础技术，分词好坏对后续各项NLP">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/1.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/2.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/3.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/4.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/5.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/6.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/7.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/8.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/9.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/10.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/11.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/12.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/13.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/14.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/15.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/16.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/17.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/18.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/19.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/20.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/21.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/22.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/23.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/24.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/25.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/26.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/27.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/28.jpg">
-<meta property="og:updated_time" content="2018-03-30T16:06:46.727Z">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/3.jpg">
+<meta property="og:updated_time" content="2018-04-16T12:03:06.514Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[程序员的自我修养--链接、装载与库]笔记(二)">
-<meta name="twitter:description" content="第二章 编译和链接  被隐藏的过程gcc处理最简单的hello world程序也要分解为4个步骤:      预处理(prepressing) 编译(compilation) 汇编(assembly) 链接(linking)     过程如图所示: 预编译阶段 预编译过程主要处理那些源代码文件中以”#”开头的预编译指令，主要规则如下:hello.i文件部分内容如下: 编译阶段(后文详解) //he">
-<meta name="twitter:image" content="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/1.jpg">
+<meta name="twitter:title" content="[NLP][长文本分类](二)语料预处理和特征降维">
+<meta name="twitter:description" content="待参考这个网站有很多好NLP文章 比如这篇文本情感分类 LDA模型下书目信息分类系统的研究与实现300万知乎多标签文本分类任务经验分享（附源码）    导语在上一篇中笔者准备了100w条新闻语料，接下来进入文本分类的预处理环节。当然，进行文本分类需要遵循一些基本步骤，以下便是笔者总结的文本分类的基本处理框架(持续更新本框架): 预处理阶段分词方案NLP中分词是一项基础技术，分词好坏对后续各项NLP">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/1.jpg">
 
 
 
@@ -149,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/"/>
 
 
 
@@ -158,15 +133,15 @@
 <link href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" rel="stylesheet">
 <script>
     (function(){
-        if(''){
-            if (prompt('猜猜密码:') !== ''){
+        if('123wan'){
+            if (prompt('猜猜密码:') !== '123wan'){
                 alert('Wrong！');
                 history.back();
             }
         }
     })();
 </script>
-  <title>[程序员的自我修养--链接、装载与库]笔记(二) | JYJatBUPT's Blog</title>
+  <title>[NLP][长文本分类](二)语料预处理和特征降维 | JYJatBUPT's Blog</title>
   
 
 
@@ -348,7 +323,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JYJatBUPT">
@@ -365,7 +340,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[程序员的自我修养--链接、装载与库]笔记(二)</h1>
+          <h1 class="post-title" itemprop="name headline">[NLP][长文本分类](二)语料预处理和特征降维</h1>
         
 
         <div class="post-meta">
@@ -377,8 +352,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T21:05:11+08:00">
-                2018-03-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-16T14:27:52+08:00">
+                2018-04-16
               </time>
             
 
@@ -414,7 +389,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  406
+                  1,918
                 </span>
               
 
@@ -439,62 +414,204 @@
       
 
       
-        <font size="5" color="blue"><center>第二章 编译和链接</center></font>
-
-<h1 id="被隐藏的过程"><a href="#被隐藏的过程" class="headerlink" title="被隐藏的过程"></a>被隐藏的过程</h1><p>gcc处理最简单的hello world程序也要分解为4个步骤:    </p>
-<ul>
-<li>预处理(prepressing)</li>
-<li>编译(compilation)</li>
-<li>汇编(assembly)</li>
-<li>链接(linking)   </li>
-</ul>
-<p>过程如图所示:<br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/1.jpg" alt=""></p>
-<h2 id="预编译阶段"><a href="#预编译阶段" class="headerlink" title="预编译阶段"></a>预编译阶段</h2><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/2.jpg" alt=""></p>
-<p><font color="red">预编译过程主要处理那些源代码文件中以”#”开头的预编译指令，主要规则如下:</font><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/3.jpg" alt=""><br>hello.i文件部分内容如下:<br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/4.jpg" alt=""><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/5.jpg" alt=""><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/6.jpg" alt=""></p>
-<h2 id="编译阶段-后文详解"><a href="#编译阶段-后文详解" class="headerlink" title="编译阶段(后文详解)"></a>编译阶段(后文详解)</h2><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/7.jpg" alt=""></p>
-<pre><code>//hello.s文件内容
-        .file   "hello.c"
-        .section        .rodata
-.LC0:
-        .string "hello world!"
-        .text
-        .globl  main
-        .type   main, @function
-main:
-.LFB0:
-        .cfi_startproc
-        pushq   %rbp
-        .cfi_def_cfa_offset 16
-        .cfi_offset 6, -16
-        movq    %rsp, %rbp
-        .cfi_def_cfa_register 6
-        movl    $.LC0, %edi
-        movl    $0, %eax
-        call    printf
-        movl    $0, %eax
-        popq    %rbp
-        .cfi_def_cfa 7, 8
-        ret
-        .cfi_endproc
-.LFE0:
-        .size   main, .-main
-        .ident  "GCC: (GNU) 4.8.5 20150623 (Red Hat 4.8.5-16)"
-        .section        .note.GNU-stack,"",@progbits
-
+        <h3 id="待参考"><a href="#待参考" class="headerlink" title="待参考"></a>待参考</h3><p><a href="https://spaces.ac.cn/category/Big-Data" target="_blank" rel="noopener">这个网站有很多好NLP文章</a> 比如这篇文<a href="https://spaces.ac.cn/archives/3360/comment-page-2" target="_blank" rel="noopener">本情感分类</a></p>
+<p><a href="http://manu44.magtech.com.cn/Jwk_infotech_wk3/article/2014/1003-3513/1003-3513-30-5-18.html#close" target="_blank" rel="noopener">LDA模型下书目信息分类系统的研究与实现</a><br><a href="https://blog.csdn.net/tmb8z9vdm66wh68vx1/article/details/78679672" target="_blank" rel="noopener">300万知乎多标签文本分类任务经验分享（附源码）</a>   </p>
+<h1 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h1><p>在上一篇中笔者准备了100w条新闻语料，接下来进入文本分类的预处理环节。当然，进行文本分类需要遵循一些基本步骤，以下便是笔者总结的文本分类的基本处理框架(持续更新本框架):<br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/1.jpg" alt=""></p>
+<h1 id="预处理阶段"><a href="#预处理阶段" class="headerlink" title="预处理阶段"></a>预处理阶段</h1><h2 id="分词方案"><a href="#分词方案" class="headerlink" title="分词方案"></a>分词方案</h2><p>NLP中分词是一项基础技术，分词好坏对后续各项NLP任务也有不小的影响。目前的常用分词方案如下:<br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/2.jpg" alt=""><br>对中文分词的讨论可以参考<a href="https://www.zhihu.com/question/19578687" target="_blank" rel="noopener">有哪些比较好的中文分词方案？</a><br>值得注意的是，<font color="red">常见的分词器都是使用机器学习算法和词典相结合，一方面能够提高分词准确率，另一方面能够改善领域适应性，比如分词器支持用户自定义词典。</font><br>目前比较成熟的分词器有多款，笔者决定在项目中采用<a href="https://github.com/fxsjy/jieba" target="_blank" rel="noopener">jieba分词</a>。<br>首先来看一下jieba分词的部分词性表，更完整的见<a href="https://blog.csdn.net/suibianshen2012/article/details/53487157" target="_blank" rel="noopener">jieba（结巴）分词种词性简介</a><br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/3.jpg" alt="">       </p>
+<p>对于新闻文本分类来说，<code>名词</code>最能突出该新闻表达的主旨，所以对新闻文本使用jieba进行带词性的分词后，需要过滤掉其它<code>非名词</code>，特别要过滤掉<code>单个字</code>，<code>数量词</code>和<code>人名</code>等。</p>
+<h2 id="去除停用词"><a href="#去除停用词" class="headerlink" title="去除停用词"></a>去除停用词</h2><p>停用词就是频繁出现在语言中，但与文本类型特征信息无关或者明显关联度很低的词。笔者在这里采用<a href="https://github.com/chdd/weibo/blob/master/stopwords/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%81%9C%E7%94%A8%E8%AF%8D%E8%A1%A8.txt" target="_blank" rel="noopener">哈工大停用词表</a>，过滤非名词和去除停用词可以在分词时一起进行。</p>
+<h2 id="去除低频词"><a href="#去除低频词" class="headerlink" title="去除低频词"></a>去除低频词</h2><p>词频为<code>1</code>或<code>2</code> 的低频词与文档的关联度较低，但在文中所占比重约为 2/3 ，在预处理过程中对低频词进行去噪，可在保证文本挖掘精度的前提下，大大减少特征维度，使时空复杂度明显下降.</p>
+<h2 id="繁简转换"><a href="#繁简转换" class="headerlink" title="繁简转换"></a>繁简转换</h2><p>取决于当前文本任务是否需要</p>
+<h2 id="替换奇异词"><a href="#替换奇异词" class="headerlink" title="替换奇异词"></a>替换奇异词</h2><p>由于新闻相对正规，所以奇异词很少出现，但如果需要处理网友评论等文本时,因为敏感词或者其它原因，文本中会出现大量的<a href="https://blog.csdn.net/u010533386/article/details/51440854" target="_blank" rel="noopener">奇异词</a>。比如:</p>
+<pre><code>
+   replace_dict = {
+    u'吻腚':u'稳定',
+    u'弓虽':u'强',
+    u'女干':u'奸',
+    u'示土':u'社',
+    u'禾口':u'和',
+    u'言皆':u'谐',
+    u'释永性':u'释永信',
+    u'大菊观':u'大局观',
+    u'yl':u'一楼',
+    u'cnm':u'草泥马',
+    u'CCTV':u'中央电视台',
+    u'CCAV':u'中央电视台',
+    u'ccav':u'中央电视台',
+    u'cctv':u'中央电视台',
+    u'qq':u'腾讯聊天账号',
+    u'QQ':u'腾讯聊天账号',
+    u'cctv':u'中央电视台',
+    u'CEO':u'首席执行官',
+    u'克宫':u'克里姆林宫',
+    u'PM2.5':u'细颗粒物',
+    u'pm2.5':u'细颗粒物',
+    u'SDR':u'特别提款权',
+    u'装13':u'装逼',
+    u'213':u'二逼',
+    u'13亿':u'十三亿',
+    u'巭':u'功夫',
+    u'孬':u'不好',
+    u'嫑':u'不要',
+    u'夯':u'大力',
+    u'芘':u'操逼',
+    u'烎':u'开火',
+    u'菌堆':u'军队',
+    u'sb':u'傻逼',
+    u'SB':u'傻逼',
+    u'Sb':u'傻逼',
+    u'sB':u'傻逼',
+    u'is':u'伊斯兰国',
+    u'isis':u'伊斯兰国',
+    u'ISIS':u'伊斯兰国',
+    u'ko':u'打晕',
+    u'你M':u'你妹',
+    u'你m':u'你妹',
+    u'震精':u'震惊',
+    u'返工分子':u'反共',
+    u'黄皮鹅狗':u'黄皮肤俄罗斯狗腿',
+    u'苏祸姨':u'苏霍伊',
+    u'混球屎报':u'环球时报',
+    u'屎报':u'时报',
+    u'jb':u'鸡巴',
+    u'j巴':u'鸡巴',
+    u'j8':u'鸡巴',
+    u'J8':u'鸡巴',
+    u'JB':u'鸡巴',
+    u'瞎BB':u'瞎说',
+    u'nb':u'牛逼',
+    u'牛b':u'牛逼',
+    u'牛B':u'牛逼',
+    u'牛bi':u'牛逼',
+    u'牛掰':u'牛逼',
+    u'苏24':u'苏两四',
+    u'苏27':u'苏两七',
+    u'痰腐集团':u'贪腐集团',
+    u'痰腐':u'贪腐',
+    u'反hua':u'反华',
+    u'屋猫':u'五毛',
+    u'5毛':u'五毛',
+    u'傻大姆':u'萨达姆',
+    u'霉狗':u'美狗',
+    u'TMD':u'他妈的',
+    u'tmd':u'他妈的',
+    u'japan':u'日本',
+    u'P民':u'屁民',
+    u'八离开烩':u'巴黎开会',
+    u'傻比':u'傻逼',
+    u'潶鬼':u'黑鬼',
+    u'cao':u'操',
+    u'爱龟':u'爱国',
+    u'天草':u'天朝',
+    u'灰机':u'飞机',
+    u'张将军':u'张召忠',
+    u'大裤衩':u'中央电视台总部大楼',
+    u'枪毕':u'枪毙',
+    u'环球屎报':u'环球时报',
+    u'环球屎包':u'环球时报',
+    u'混球报':u'环球时报',
+    u'还球时报':u'环球时报',
+    u'人X日报':u'人民日报',
+    u'人x日报':u'人民日报',
+    u'清只县':u'清知县',
+    u'PM值':u'颗粒物值',
+    u'TM':u'他妈',
+    u'首毒':u'首都',
+    u'gdp':u'国内生产总值',
+    u'GDP':u'国内生产总值',
+    u'鸡的屁':u'国内生产总值',
+    u'999':u'红十字会',
+    u'霉里贱':u'美利坚',
+    u'毛子':u'俄罗斯人',
+    u'ZF':u'政府',
+    u'zf':u'政府',
+    u'蒸腐':u'政府',
+    u'霉国':u'美国',
+    u'狗熊':u'俄罗斯',
+    u'恶罗斯':u'俄罗斯',
+    u'我x':u'我操',
+    u'x你妈':u'操你妈',
+    u'p用':u'屁用',
+    u'胎毒':u'台独',
+    u'DT':u'蛋疼',
+    u'dt':u'蛋疼',
+    u'IT':u'信息技术',
+    u'1楼':u'一楼',
+    u'2楼':u'二楼',
+    u'2逼':u'二逼',
+    u'二b':u'二逼',
+    u'二B':u'二逼',
+    u'晚9':u'晚九',
+    u'朝5':u'朝五',
+    u'黄易':u'黄色网易',
+    u'艹':u'操',
+    u'滚下抬':u'滚下台',
+    u'灵道':u'领导',
+    u'煳':u'糊',
+    u'跟贴被火星网友带走啦':u'',
+    u'猿们':u'公务员们',
+    u'棺猿':u'官员',
+    u'贯猿':u'官员',
+    u'每只猿':u'每个公务员',
+    u'巢县':u'朝鲜',
+    u'死大林':u'斯大林',
+    u'无毛们':u'五毛们',
+    u'天巢':u'天朝',
+    u'普特勒':u'普京',
+    u'依拉克':u'伊拉克',
+    u'歼20':u'歼二零',
+    u'歼10':u'歼十',
+    u'歼8':u'歼八',
+    u'f22':u'猛禽',
+    u'p民':u'屁民',
+    u'钟殃':u'中央'
+}
 </code></pre>
 
-<p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/8.jpg" alt=""></p>
-<h2 id="汇编阶段"><a href="#汇编阶段" class="headerlink" title="汇编阶段"></a>汇编阶段</h2><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/9.jpg" alt=""><br>所以，有以下3种命令方式生成目标文件:<br><code>as hello.s -o hello.o</code><br><code>gcc -c hello.s -o hello.o</code><br><code>gcc -c hello.c -o hello.o</code>   </p>
-<h2 id="链接阶段"><a href="#链接阶段" class="headerlink" title="链接阶段"></a>链接阶段</h2><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/10.jpg" alt=""></p>
-<h1 id="编译器做了哪些工作"><a href="#编译器做了哪些工作" class="headerlink" title="编译器做了哪些工作"></a>编译器做了哪些工作</h1><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/11.jpg" alt=""><br>以下面的代码为例分析对应过程:<br><code>array[index]=(index+4)*(2)</code><br><code>CompilerExpression.c</code>   </p>
-<h2 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h2><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/12.jpg" alt=""></p>
-<h2 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h2><p>基于上下文无关文法和下推自动机对扫描器产生的记号构造文法树<br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/13.jpg" alt=""><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/14.jpg" alt=""></p>
-<h2 id="语义分析"><a href="#语义分析" class="headerlink" title="语义分析"></a>语义分析</h2><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/15.jpg" alt=""><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/16.jpg" alt=""><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/17.jpg" alt=""></p>
-<h2 id="源码级优化产生中间代码"><a href="#源码级优化产生中间代码" class="headerlink" title="源码级优化产生中间代码"></a>源码级优化产生中间代码</h2><p>上述语法树中，(2+6)这个表达式可以在编译器就确定下来，因此完全可以用8代替，这就是源码级优化，类似还有其它复杂的优化过程，不在赘述。<br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/18.jpg" alt=""><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/19.jpg" alt=""><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/20.jpg" alt=""><br><code>t2 = index + 4</code><br><code>t2 = t2 * 8</code><br><code>array[index] = t2</code><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/21.jpg" alt=""></p>
-<h2 id="目标代码生成和目标代码优化"><a href="#目标代码生成和目标代码优化" class="headerlink" title="目标代码生成和目标代码优化"></a>目标代码生成和目标代码优化</h2><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/22.jpg" alt=""><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/23.jpg" alt=""><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/24.jpg" alt=""></p>
-<h1 id="链接器的静态链接"><a href="#链接器的静态链接" class="headerlink" title="链接器的静态链接"></a>链接器的静态链接</h1><p><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/25.jpg" alt=""></p>
-<p><font color="red"><strong>好好理解下面的话</strong></font><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/26.jpg" alt=""><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/27.jpg" alt=""><br><img src="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/28.jpg" alt=""></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>注意:每类新闻语料有10W条，每条新闻按照时间顺序依次标号，其中5W条用来训练，剩余5W条用来测试。考虑到<code>随着时间变迁，新生事物不断出现</code>，我们不能简单的取前5W条进行训练，后5W条进行测试。这里，我们采用<code>标号为奇数的做训练集，标号为偶数的做测试集</code>。 采用以下代码依次对10类新闻语料进行预处理，保存预处理结果。</p>
+<pre><code>#对某个新闻类别下的语料进行分词和去停用词
+#-*- encoding: utf-8 -*-
+import jieba
+import jieba.posseg as pseg
 
+def CreatStopWords(stoprWordsPath):
+    with open(stoprWordsPath,encoding=&apos;utf-8&apos;) as writer:
+        stopWords=set()
+        for aLine in writer:
+            stopWords.add(aLine.strip(&apos;\n&apos;))
+    return stopWords
+
+def Cutting(DictPath,OutPath,StartNum,EndNUm,stopWords):
+    StartNum=StartNum+1
+    for index in range(StartNum,EndNUm+1):
+        if(index%2 != 0):
+            FilePath=DictPath+&apos;/&apos;+str(index)+&apos;.txt&apos;
+            OutFilePath=OutPath+&apos;/&apos;+str(index)+&apos;.txt&apos;
+            f1 = open( FilePath, &apos;r&apos;, encoding=&apos;UTF-8&apos;)
+            f2 = open(OutFilePath, &apos;w&apos;, encoding=&apos;UTF-8&apos;)
+            fs = f1.read()
+            result = pseg.cut(fs)
+            Resstring = &quot;&quot;
+            for w in result:
+                # 去除非名词和停用词
+                if w.flag.startswith(&quot;n&quot;) and (w.flag != &apos;nr&apos;) and (w.word not in stopWords):
+                    Resstring = Resstring + w.word + &quot; &quot;
+                    # print (w.word, w.flag)
+            f2.write(Resstring + &apos;\n&apos;)
+
+def main():
+    DictPath=&quot;E:/TEXTCRAWER/yl/corpus&quot;
+    OutPath=&quot;E:/TEXTCRAWER/yl/CutRes_test&quot;
+    StopWordsPath=&apos;E:/TEXTCRAWER/auto/stopWords&apos;
+    StartNum=0
+    EndNUm=99999
+    stopWords=CreatStopWords(StopWordsPath)
+    Cutting(DictPath,OutPath,StartNum,EndNUm,stopWords)
+    #print(&quot;Over cutting words&quot;)
+
+if __name__ == &apos;__main__&apos;:
+    main()
+</code></pre>
       
     </div>
     
@@ -523,7 +640,7 @@ main:
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/" title="[程序员的自我修养--链接、装载与库]笔记(二)">http://yoursite.com/2018/03/30/程序员的自我修养-链接、装载与库-笔记-二/</a>
+    <a href="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/" title="[NLP][长文本分类](二)语料预处理和特征降维">http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -538,7 +655,7 @@ main:
       
         <div class="post-tags">
           
-            <a href="/tags/C-实践/" rel="tag"><i class="fa fa-tag"></i> C++实践</a>
+            <a href="/tags/NLP实践/" rel="tag"><i class="fa fa-tag"></i> NLP实践</a>
           
         </div>
       
@@ -551,8 +668,8 @@ main:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/30/程序员的自我修养-链接、装载与库-笔记-一/" rel="next" title="[程序员的自我修养--链接、装载与库]笔记(一)">
-                <i class="fa fa-chevron-left"></i> [程序员的自我修养--链接、装载与库]笔记(一)
+              <a href="/2018/04/14/高性能MySQL-笔记-一/" rel="next" title="[高性能MySQL]笔记(一)">
+                <i class="fa fa-chevron-left"></i> [高性能MySQL]笔记(一)
               </a>
             
           </div>
@@ -560,10 +677,6 @@ main:
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/31/程序员的自我修养-链接、装载与库-笔记-三/" rel="prev" title="[程序员的自我修养--链接、装载与库]笔记(三)">
-                [程序员的自我修养--链接、装载与库]笔记(三) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -711,7 +824,7 @@ main:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#被隐藏的过程"><span class="nav-number">1.</span> <span class="nav-text">被隐藏的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预编译阶段"><span class="nav-number">1.1.</span> <span class="nav-text">预编译阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译阶段-后文详解"><span class="nav-number">1.2.</span> <span class="nav-text">编译阶段(后文详解)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#汇编阶段"><span class="nav-number">1.3.</span> <span class="nav-text">汇编阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接阶段"><span class="nav-number">1.4.</span> <span class="nav-text">链接阶段</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译器做了哪些工作"><span class="nav-number">2.</span> <span class="nav-text">编译器做了哪些工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#词法分析"><span class="nav-number">2.1.</span> <span class="nav-text">词法分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法分析"><span class="nav-number">2.2.</span> <span class="nav-text">语法分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语义分析"><span class="nav-number">2.3.</span> <span class="nav-text">语义分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码级优化产生中间代码"><span class="nav-number">2.4.</span> <span class="nav-text">源码级优化产生中间代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标代码生成和目标代码优化"><span class="nav-number">2.5.</span> <span class="nav-text">目标代码生成和目标代码优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链接器的静态链接"><span class="nav-number">3.</span> <span class="nav-text">链接器的静态链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#待参考"><span class="nav-number">1.</span> <span class="nav-text">待参考</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导语"><span class="nav-number"></span> <span class="nav-text">导语</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预处理阶段"><span class="nav-number"></span> <span class="nav-text">预处理阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分词方案"><span class="nav-number"></span> <span class="nav-text">分词方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去除停用词"><span class="nav-number"></span> <span class="nav-text">去除停用词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去除低频词"><span class="nav-number"></span> <span class="nav-text">去除低频词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#繁简转换"><span class="nav-number"></span> <span class="nav-text">繁简转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换奇异词"><span class="nav-number"></span> <span class="nav-text">替换奇异词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number"></span> <span class="nav-text">代码实现</span></a></div>
             
 
           </div>
