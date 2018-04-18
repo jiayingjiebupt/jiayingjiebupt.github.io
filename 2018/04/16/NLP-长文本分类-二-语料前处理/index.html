@@ -79,21 +79,34 @@
 
 
 
-<meta name="description" content="待参考这个网站有很多好NLP文章 比如这篇文本情感分类 LDA模型下书目信息分类系统的研究与实现300万知乎多标签文本分类任务经验分享（附源码）    导语在上一篇中笔者准备了100w条新闻语料，接下来进入文本分类的预处理环节。当然，进行文本分类需要遵循一些基本步骤，以下便是笔者总结的文本分类的基本处理框架(持续更新本框架): 预处理阶段分词方案NLP中分词是一项基础技术，分词好坏对后续各项NLP">
+<meta name="description" content="导语在上一篇中笔者准备了100w条新闻语料，接下来进入文本分类的预处理环节。当然，进行文本分类需要遵循一些基本步骤，以下便是笔者总结的文本分类的基本处理框架(持续更新本框架): 预处理阶段分词方案NLP中分词是一项基础技术，分词好坏对后续各项NLP任务也有不小的影响。目前的常用分词方案如下:对中文分词的讨论可以参考有哪些比较好的中文分词方案？值得注意的是，常见的分词器都是使用机器学习算法和词典相结">
 <meta name="keywords" content="NLP实践">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[NLP][长文本分类](二)语料预处理和特征降维">
+<meta property="og:title" content="[NLP][长文本分类](二)语料预处理和文本特征选择">
 <meta property="og:url" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/index.html">
 <meta property="og:site_name" content="JYJatBUPT&#39;s Blog">
-<meta property="og:description" content="待参考这个网站有很多好NLP文章 比如这篇文本情感分类 LDA模型下书目信息分类系统的研究与实现300万知乎多标签文本分类任务经验分享（附源码）    导语在上一篇中笔者准备了100w条新闻语料，接下来进入文本分类的预处理环节。当然，进行文本分类需要遵循一些基本步骤，以下便是笔者总结的文本分类的基本处理框架(持续更新本框架): 预处理阶段分词方案NLP中分词是一项基础技术，分词好坏对后续各项NLP">
+<meta property="og:description" content="导语在上一篇中笔者准备了100w条新闻语料，接下来进入文本分类的预处理环节。当然，进行文本分类需要遵循一些基本步骤，以下便是笔者总结的文本分类的基本处理框架(持续更新本框架): 预处理阶段分词方案NLP中分词是一项基础技术，分词好坏对后续各项NLP任务也有不小的影响。目前的常用分词方案如下:对中文分词的讨论可以参考有哪些比较好的中文分词方案？值得注意的是，常见的分词器都是使用机器学习算法和词典相结">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/2.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/3.jpg">
-<meta property="og:updated_time" content="2018-04-16T12:03:06.514Z">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/4.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/5.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/6.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/7.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/8.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/9.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/10.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/13.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/11.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/12.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/14.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/15.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/16.jpg">
+<meta property="og:updated_time" content="2018-04-18T13:08:40.898Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[NLP][长文本分类](二)语料预处理和特征降维">
-<meta name="twitter:description" content="待参考这个网站有很多好NLP文章 比如这篇文本情感分类 LDA模型下书目信息分类系统的研究与实现300万知乎多标签文本分类任务经验分享（附源码）    导语在上一篇中笔者准备了100w条新闻语料，接下来进入文本分类的预处理环节。当然，进行文本分类需要遵循一些基本步骤，以下便是笔者总结的文本分类的基本处理框架(持续更新本框架): 预处理阶段分词方案NLP中分词是一项基础技术，分词好坏对后续各项NLP">
+<meta name="twitter:title" content="[NLP][长文本分类](二)语料预处理和文本特征选择">
+<meta name="twitter:description" content="导语在上一篇中笔者准备了100w条新闻语料，接下来进入文本分类的预处理环节。当然，进行文本分类需要遵循一些基本步骤，以下便是笔者总结的文本分类的基本处理框架(持续更新本框架): 预处理阶段分词方案NLP中分词是一项基础技术，分词好坏对后续各项NLP任务也有不小的影响。目前的常用分词方案如下:对中文分词的讨论可以参考有哪些比较好的中文分词方案？值得注意的是，常见的分词器都是使用机器学习算法和词典相结">
 <meta name="twitter:image" content="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/1.jpg">
 
 
@@ -141,7 +154,7 @@
         }
     })();
 </script>
-  <title>[NLP][长文本分类](二)语料预处理和特征降维 | JYJatBUPT's Blog</title>
+  <title>[NLP][长文本分类](二)语料预处理和文本特征选择 | JYJatBUPT's Blog</title>
   
 
 
@@ -340,7 +353,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[NLP][长文本分类](二)语料预处理和特征降维</h1>
+          <h1 class="post-title" itemprop="name headline">[NLP][长文本分类](二)语料预处理和文本特征选择</h1>
         
 
         <div class="post-meta">
@@ -389,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,918
+                  3,876
                 </span>
               
 
@@ -414,12 +427,10 @@
       
 
       
-        <h3 id="待参考"><a href="#待参考" class="headerlink" title="待参考"></a>待参考</h3><p><a href="https://spaces.ac.cn/category/Big-Data" target="_blank" rel="noopener">这个网站有很多好NLP文章</a> 比如这篇文<a href="https://spaces.ac.cn/archives/3360/comment-page-2" target="_blank" rel="noopener">本情感分类</a></p>
-<p><a href="http://manu44.magtech.com.cn/Jwk_infotech_wk3/article/2014/1003-3513/1003-3513-30-5-18.html#close" target="_blank" rel="noopener">LDA模型下书目信息分类系统的研究与实现</a><br><a href="https://blog.csdn.net/tmb8z9vdm66wh68vx1/article/details/78679672" target="_blank" rel="noopener">300万知乎多标签文本分类任务经验分享（附源码）</a>   </p>
-<h1 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h1><p>在上一篇中笔者准备了100w条新闻语料，接下来进入文本分类的预处理环节。当然，进行文本分类需要遵循一些基本步骤，以下便是笔者总结的文本分类的基本处理框架(持续更新本框架):<br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/1.jpg" alt=""></p>
+        <h1 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h1><p>在上一篇中笔者准备了100w条新闻语料，接下来进入文本分类的预处理环节。当然，进行文本分类需要遵循一些基本步骤，以下便是笔者总结的文本分类的基本处理框架(持续更新本框架):<br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/1.jpg" alt=""></p>
 <h1 id="预处理阶段"><a href="#预处理阶段" class="headerlink" title="预处理阶段"></a>预处理阶段</h1><h2 id="分词方案"><a href="#分词方案" class="headerlink" title="分词方案"></a>分词方案</h2><p>NLP中分词是一项基础技术，分词好坏对后续各项NLP任务也有不小的影响。目前的常用分词方案如下:<br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/2.jpg" alt=""><br>对中文分词的讨论可以参考<a href="https://www.zhihu.com/question/19578687" target="_blank" rel="noopener">有哪些比较好的中文分词方案？</a><br>值得注意的是，<font color="red">常见的分词器都是使用机器学习算法和词典相结合，一方面能够提高分词准确率，另一方面能够改善领域适应性，比如分词器支持用户自定义词典。</font><br>目前比较成熟的分词器有多款，笔者决定在项目中采用<a href="https://github.com/fxsjy/jieba" target="_blank" rel="noopener">jieba分词</a>。<br>首先来看一下jieba分词的部分词性表，更完整的见<a href="https://blog.csdn.net/suibianshen2012/article/details/53487157" target="_blank" rel="noopener">jieba（结巴）分词种词性简介</a><br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/3.jpg" alt="">       </p>
-<p>对于新闻文本分类来说，<code>名词</code>最能突出该新闻表达的主旨，所以对新闻文本使用jieba进行带词性的分词后，需要过滤掉其它<code>非名词</code>，特别要过滤掉<code>单个字</code>，<code>数量词</code>和<code>人名</code>等。</p>
-<h2 id="去除停用词"><a href="#去除停用词" class="headerlink" title="去除停用词"></a>去除停用词</h2><p>停用词就是频繁出现在语言中，但与文本类型特征信息无关或者明显关联度很低的词。笔者在这里采用<a href="https://github.com/chdd/weibo/blob/master/stopwords/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%81%9C%E7%94%A8%E8%AF%8D%E8%A1%A8.txt" target="_blank" rel="noopener">哈工大停用词表</a>，过滤非名词和去除停用词可以在分词时一起进行。</p>
+<p>对于新闻文本分类来说，<code>名词</code>最能突出该新闻表达的主旨，所以对新闻文本使用jieba进行带词性的分词后，需要过滤掉其它<code>非名词</code>，特别要过滤掉<code>单个字</code>，<code>数量词</code>和<code>人名</code>等。 其中，可以利用<code>百家姓氏表</code>，去除包含这些姓氏的人名。</p>
+<h2 id="去除停用词"><a href="#去除停用词" class="headerlink" title="去除停用词"></a>去除停用词</h2><p>停用词就是频繁出现，但没有意义的虚词或者是与文本类型特征信息无关或者明显关联度很低的词。笔者在这里采用<a href="https://github.com/chdd/weibo/blob/master/stopwords/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%81%9C%E7%94%A8%E8%AF%8D%E8%A1%A8.txt" target="_blank" rel="noopener">哈工大停用词表</a>，过滤非名词和去除停用词可以在分词时一起进行。</p>
 <h2 id="去除低频词"><a href="#去除低频词" class="headerlink" title="去除低频词"></a>去除低频词</h2><p>词频为<code>1</code>或<code>2</code> 的低频词与文档的关联度较低，但在文中所占比重约为 2/3 ，在预处理过程中对低频词进行去噪，可在保证文本挖掘精度的前提下，大大减少特征维度，使时空复杂度明显下降.</p>
 <h2 id="繁简转换"><a href="#繁简转换" class="headerlink" title="繁简转换"></a>繁简转换</h2><p>取决于当前文本任务是否需要</p>
 <h2 id="替换奇异词"><a href="#替换奇异词" class="headerlink" title="替换奇异词"></a>替换奇异词</h2><p>由于新闻相对正规，所以奇异词很少出现，但如果需要处理网友评论等文本时,因为敏感词或者其它原因，文本中会出现大量的<a href="https://blog.csdn.net/u010533386/article/details/51440854" target="_blank" rel="noopener">奇异词</a>。比如:</p>
@@ -569,49 +580,213 @@
 </code></pre>
 
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>注意:每类新闻语料有10W条，每条新闻按照时间顺序依次标号，其中5W条用来训练，剩余5W条用来测试。考虑到<code>随着时间变迁，新生事物不断出现</code>，我们不能简单的取前5W条进行训练，后5W条进行测试。这里，我们采用<code>标号为奇数的做训练集，标号为偶数的做测试集</code>。 采用以下代码依次对10类新闻语料进行预处理，保存预处理结果。</p>
-<pre><code>#对某个新闻类别下的语料进行分词和去停用词
-#-*- encoding: utf-8 -*-
-import jieba
-import jieba.posseg as pseg
+<pre><code>
+    #对某个新闻类别下的语料进行分词和去停用词
+    #-*- encoding: utf-8 -*-
+    import jieba
+    import jieba.posseg as pseg
 
-def CreatStopWords(stoprWordsPath):
-    with open(stoprWordsPath,encoding=&apos;utf-8&apos;) as writer:
-        stopWords=set()
-        for aLine in writer:
-            stopWords.add(aLine.strip(&apos;\n&apos;))
-    return stopWords
+    def CreatStopWords(stoprWordsPath):
+        with open(stoprWordsPath,encoding='utf-8') as writer:
+            stopWords=set()
+            for aLine in writer:
+                stopWords.add(aLine.strip('\n'))
+        return stopWords
 
-def Cutting(DictPath,OutPath,StartNum,EndNUm,stopWords):
-    StartNum=StartNum+1
-    for index in range(StartNum,EndNUm+1):
-        if(index%2 != 0):
-            FilePath=DictPath+&apos;/&apos;+str(index)+&apos;.txt&apos;
-            OutFilePath=OutPath+&apos;/&apos;+str(index)+&apos;.txt&apos;
-            f1 = open( FilePath, &apos;r&apos;, encoding=&apos;UTF-8&apos;)
-            f2 = open(OutFilePath, &apos;w&apos;, encoding=&apos;UTF-8&apos;)
-            fs = f1.read()
-            result = pseg.cut(fs)
-            Resstring = &quot;&quot;
-            for w in result:
-                # 去除非名词和停用词
-                if w.flag.startswith(&quot;n&quot;) and (w.flag != &apos;nr&apos;) and (w.word not in stopWords):
-                    Resstring = Resstring + w.word + &quot; &quot;
-                    # print (w.word, w.flag)
-            f2.write(Resstring + &apos;\n&apos;)
+    def Cutting(DictPath,OutPath,StartNum,EndNUm,stopWords):
+        StartNum=StartNum+1
+        for index in range(StartNum,EndNUm+1):
+            if(index%2 != 0):
+                FilePath=DictPath+'/'+str(index)+'.txt'
+                OutFilePath=OutPath+'/'+str(index)+'.txt'
+                f1 = open( FilePath, 'r', encoding='UTF-8')
+                f2 = open(OutFilePath, 'w', encoding='UTF-8')
+                fs = f1.read()
+                result = pseg.cut(fs)
+                Resstring = ""
+                for w in result:
+                    # 去除非名词和停用词
+                    if w.flag.startswith("n") and (w.flag != 'nr') and (w.word not in stopWords):
+                        Resstring = Resstring + w.word + " "
+                        # print (w.word, w.flag)
+                f2.write(Resstring + '\n')
 
-def main():
-    DictPath=&quot;E:/TEXTCRAWER/yl/corpus&quot;
-    OutPath=&quot;E:/TEXTCRAWER/yl/CutRes_test&quot;
-    StopWordsPath=&apos;E:/TEXTCRAWER/auto/stopWords&apos;
-    StartNum=0
-    EndNUm=99999
-    stopWords=CreatStopWords(StopWordsPath)
-    Cutting(DictPath,OutPath,StartNum,EndNUm,stopWords)
-    #print(&quot;Over cutting words&quot;)
+    def main():
+        DictPath="E:/TEXTCRAWER/yl/corpus"
+        OutPath="E:/TEXTCRAWER/yl/CutRes_test"
+        StopWordsPath='E:/TEXTCRAWER/auto/stopWords'
+        StartNum=0
+        EndNUm=99999
+        stopWords=CreatStopWords(StopWordsPath)
+        Cutting(DictPath,OutPath,StartNum,EndNUm,stopWords)
+        #print("Over cutting words")
+
+    if __name__ == '__main__':
+        main()   
+</code></pre>
+
+<h1 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h1><p>经过预处理后，文本集合中保留下来的特征词还是很多，特征维度过高，增加分类计算复杂度，也存在大量噪音，不利于分类精度的提高。于是需要进行文本特征的提取已达到<code>去粗取精</code>的效果。特征提取的目的就是<code>特征降维</code>，克服文本固有的<code>高纬性</code>、<code>高稀疏性</code>的缺点，选出对分类最有帮助的特征词集合。   </p>
+<p>特征降维方式从2个大的立场切入：</p>
+<ul>
+<li><font color="red" size="4">特征选择 (在词义空间中表达特征，不考虑特征的语义)</font>   </li>
+<li><font color="red" size="4">特征变换/抽取 (在语义空间中表达特征，考虑特征的语义)</font>   
+
+</li>
+</ul>
+<p>常用的几个特征选择准则总结如下:        </p>
+<h2 id="文档频率"><a href="#文档频率" class="headerlink" title="文档频率"></a>文档频率</h2><p>文档频率　指某个特征词在训练集中出现的文档数。我们可以统计出每个特征词的文档频率值，再按照预先设定的阈值，去除低于阈值的特征词。    </p>
+<h2 id="互信息"><a href="#互信息" class="headerlink" title="互信息"></a>互信息</h2><font color="blue">互信息(Mutual Information,MI)</font>　　用于度量某个特征词与特定类别的共现程度，计算公式如下:<br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/4.jpg" alt=""><br>当两者近似无关时，<br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/5.jpg" alt=""><br>对于新闻文本这一个多分类问题，我们可以计算该特征词与所有类别的期望互信息来度量该特征词对分类差异的重要性,依次计算出每个特征词的互信息，最后按照计算值进行排序选择特征词。<br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/6.jpg" alt=""><br><font color="red" size="3"> 缺点分析: 互信息实际中并不是一个很好的文本选择准则，因为从上述公示中可以看出，对于比较孤僻的特征词，P(w<sub>j</sub>)会很小，导致计算值很大。 因此，互信息倾向于选择那些频率较低的特征词，但实际上只有选择那些在某一类中比较频繁地出现但是在其他类下很少出现的词作为特征项，才能达到不错的分类效果。</font>    
+
+
+
+<h2 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h2><p>先插入一点关于<a href="https://blog.csdn.net/u013713117/article/details/55099060" target="_blank" rel="noopener">信息熵的背景知识</a><br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/7.jpg" alt="">  </p>
+<font color="red" size="3">注意其中条件熵的定义和推导<br>条件熵H(Y|X)是在已知随机变量X的所有概率分布取值的条件下对随机变量Y的不确定性的度量。</font><br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/8.jpg" alt=""><br>通俗一点就是，当我们完全洞悉随机变量X的概率分布后，它对我们度量随机变量Y有多少帮助。假如，X和Y是独立的，则根据上述公式得到H(Y|X)=H(Y)，知道X的分布对度量Y并没有什么好处。而如果X和Y高度相关，乃至于Y=X，则此时H(Y|X)=H(X)，则此时我们可以完全度量Y。<br><font color="blue">信息增益(Information Gain,IG)</font> 　度量某个特征的存在与否能够为分类系统带来多少信息量的差异，带来的信息越多，那么该特征就越重要。推导如下:<br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/9.jpg" alt=""><br><font color="red" size="3"> 缺点分析: 信息增益本质就是计算引入特征项前后的类别随机变量C的熵差，而熵的计算是针对整个分类系统而言的，所以，信息增益只能判断该特征对所有类别的重要性，所有类别共享一套特征集合，而无法计算该特征与具体某个类别的关系，与卡方检验相比处理粒度不够细。</font>      
+
+
+
+<h2 id="卡方检验"><a href="#卡方检验" class="headerlink" title="卡方检验"></a>卡方检验</h2><font color="blue">卡方检验(Chi’s Test,　Chi)</font>　是相对不错的特征选择准则，它也是本项目采用的准则。<br>卡方检验在统计中常用于检验2个随机变量是否独立，其基本思想是<font color="red">观察实际值和理论值的偏差来确定理论的正确性</font>，具体做的时候常常先假设两个变量确实是独立的（“原假设”），然后观察实际值（观察值）与理论值（这个理论值是指“如果两者确实独立”的情况下应该有的值）的偏差程度，如果偏差足够小，我们就认为误差是很自然的样本误差，是测量手段不够精确导致或者偶然发生的，两者确确实实是独立的，此时就接受原假设；如果偏差大到一定程度，使得这样的误差不太可能是偶然产生或者测量不精确所致，我们就认为两者实际上是相关的，即否定原假设，而接受备择假设。<br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/10.jpg" alt=""><br>回到文本特征选择中，对于当前特征　w<sub>j</sub>　和特定类别　C<sub>i</sub>　，假设我们统计语料后得到下面这张表格:<br><font color="blue">说明:<br>N :训练集文档总数<br>A :包含w<sub>j</sub>，同时属于类别C<sub>i</sub>的文档计数<br>B :包含w<sub>j</sub>，但不属于类别C<sub>i</sub>的文档计数<br>C :不包含w<sub>j</sub>，但属于类别C<sub>i</sub>的文档计数<br>D :不包含w<sub>j</sub>，同时不属于类别C<sub>i</sub>的文档计数</font>
+
+<table>
+<thead>
+<tr>
+<th>Chi’s Test</th>
+<th>属于类别C<sub>i</sub></th>
+<th>不属于类别C<sub>i</sub></th>
+<th>总计</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>含特征w<sub>j</sub></td>
+<td>A</td>
+<td>B</td>
+<td>A+B</td>
+</tr>
+<tr>
+<td>不含特征w<sub>j</sub></td>
+<td>C</td>
+<td>D</td>
+<td>C+D</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>A+C</td>
+<td>B+D</td>
+<td>N=A+B+C+D</td>
+</tr>
+</tbody>
+</table>
+<p>则计算某个特征词w<sub>j</sub>和某个类别C<sub>i</sub>的Chi值公式为:<br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/13.jpg" alt=""><br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/11.jpg" alt=""><br>按照下图利用上述公式计算词典中的每个特征词和每个类别的Chi值:<br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/12.jpg" alt=""><br>其算法伪代码如下:<br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/14.jpg" alt="">    </p>
+<h2 id="卡方检验代码实现"><a href="#卡方检验代码实现" class="headerlink" title="卡方检验代码实现"></a>卡方检验代码实现</h2><pre><code>对训练文本进行卡方检验计算
+# encoding=utf-8
+import math
+import time
+from operator import itemgetter
+WordInCate = {}
+CatoDocsNumber = {  #
+    0: 50000,
+    1: 50000,
+    2: 50000,
+    3: 50000,
+    4: 50000,
+    5: 50000,
+    6: 50000,
+    7: 50000,
+    8: 50000,
+    9: 50000,
+    10: 500000
+}
+
+
+# the line of word belong to which cate
+def cateIdx(lineNum):
+    return math.floor(lineNum/50000)
+
+
+# for wordsStatistics
+def wordsStatistics(trainfile):
+    with open(trainfile, &apos;r&apos;, encoding=&apos;utf-8&apos;) as f:
+        lineNum = 0
+        for line in f:
+            lineNum += 1
+            cate = cateIdx(lineNum)
+            for word in set(line.split()):
+                if (word not in WordInCate):
+                    WordInCate[word] = {cate:1}  # the word appears for the first time
+                else:
+                    if (cate in WordInCate[word]):  # the word-cate has been there
+                        WordInCate[word][cate] += 1  # the word has been there but word-cate appears for the first time
+                    else:
+                        WordInCate[word][cate] = 1
+
+
+# output.txt
+def outputFile(outputfile):
+    with open(outputfile,&apos;w&apos;,encoding=&apos;utf-8&apos;) as f:
+        for word, cateCnt in WordInCate.items():
+            f.write(word+&apos; &apos;)
+            for cate, cnt in cateCnt.items():
+                f.write(str(cate)+&apos;:&apos;+str(cnt)+&apos; &apos;)
+            f.write(&apos;\n&apos;)
+
+
+# calculate total appear time for a word in all docs
+def totalForAWord():
+    for word, cateCnt in WordInCate.items():
+        wordTotal = 0
+        for cnt in cateCnt.values():
+            wordTotal += cnt
+        WordInCate[word][10] = wordTotal
+
+
+# get top chisquare words in each catogory
+def getTop(ChisForOneCate):
+    top = sorted(ChisForOneCate, key=itemgetter(1, 0),reverse=True)
+    return top[0:5000]  #
+
+
+# output chisquare to file
+def chisOutput(cate, top):
+    with open(&apos;D:/TextClassify/50W测试集/chis&apos;+str(cate)+&apos;.txt&apos;, &apos;w&apos;, encoding=&apos;utf-8&apos;) as f:
+        for wordChis in top:
+            f.write(wordChis[0] + &apos;:&apos;+str(wordChis[1])+&apos;\n&apos;)
+
+
+# calculate chisquare
+def chisquareTest():
+    N=CatoDocsNumber[10]
+    for cate in range(0,(len(CatoDocsNumber)-1)):
+        ChisForOneCate = set()
+        M=CatoDocsNumber[cate]
+        for word in WordInCate:
+            if (cate in WordInCate[word]):
+                A= WordInCate[word][cate]
+                B= WordInCate[word][10]-A
+                C= M-A
+                D= N-M-B
+                if((A + B)*(A + C)*(B + D)*(C + D)==0 or (A * D - B * C)&lt;=0):
+                    chisquare=0
+                else:
+                    chisquare = (N * pow((A * D - B * C),2)) / ((A + B)*(A + C)*(B + D)*(C + D))
+                ChisForOneCate.add((word, chisquare))
+            else:
+                pass
+        top = getTop(ChisForOneCate)
+        chisOutput(cate, top)
+
 
 if __name__ == &apos;__main__&apos;:
-    main()
-</code></pre>
+    print(&quot;start :&quot;, time.time())
+    DictPath = &quot;train50W.txt&quot;
+    wordsStatistics(DictPath)
+    totalForAWord()
+    OutPath = &quot;word_Cate_docsCnt2.txt&quot;
+    outputFile(OutPath)
+    chisquareTest()
+    print(&quot;finish :&quot;, time.time())
+</code></pre><p>进行卡方检验后，我们分别得到10个文本，分别对应这10个类别下每个单词和该类别的chi值。<br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/15.jpg" alt=""><br>例如: 财经类对应的Chi值如下:<br><img src="/2018/04/16/NLP-长文本分类-二-语料前处理/16.jpg" alt=""></p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>在本篇文章中，笔者主要详细描述了文本的预处理阶段中的若干环节和几种文本特征选择方法，并给出了本项目中针对若干环节的实践代码。<br>需要指出，文本预处理和特征提取方法对后续分类器正确分类有至关重要的影响，随着后续项目的进行和笔者经验的不断积累，可以适时地将心得体会记录在这篇文章中，不断完善本篇文章。<br>至于文本特征变换/抽取的若干方法在后续文章中会详细讲到。那么在下一篇文章中，笔者打算实战朴素贝叶斯分类器用于我们的新闻文本分类。</p>
+
       
     </div>
     
@@ -640,7 +815,7 @@ if __name__ == &apos;__main__&apos;:
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/" title="[NLP][长文本分类](二)语料预处理和特征降维">http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/</a>
+    <a href="http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/" title="[NLP][长文本分类](二)语料预处理和文本特征选择">http://yoursite.com/2018/04/16/NLP-长文本分类-二-语料前处理/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -824,7 +999,7 @@ if __name__ == &apos;__main__&apos;:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#待参考"><span class="nav-number">1.</span> <span class="nav-text">待参考</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导语"><span class="nav-number"></span> <span class="nav-text">导语</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预处理阶段"><span class="nav-number"></span> <span class="nav-text">预处理阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分词方案"><span class="nav-number"></span> <span class="nav-text">分词方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去除停用词"><span class="nav-number"></span> <span class="nav-text">去除停用词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去除低频词"><span class="nav-number"></span> <span class="nav-text">去除低频词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#繁简转换"><span class="nav-number"></span> <span class="nav-text">繁简转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换奇异词"><span class="nav-number"></span> <span class="nav-text">替换奇异词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number"></span> <span class="nav-text">代码实现</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导语"><span class="nav-number">1.</span> <span class="nav-text">导语</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预处理阶段"><span class="nav-number">2.</span> <span class="nav-text">预处理阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分词方案"><span class="nav-number">2.1.</span> <span class="nav-text">分词方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去除停用词"><span class="nav-number">2.2.</span> <span class="nav-text">去除停用词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去除低频词"><span class="nav-number">2.3.</span> <span class="nav-text">去除低频词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#繁简转换"><span class="nav-number">2.4.</span> <span class="nav-text">繁简转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换奇异词"><span class="nav-number">2.5.</span> <span class="nav-text">替换奇异词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">2.6.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特征选择"><span class="nav-number">3.</span> <span class="nav-text">特征选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文档频率"><span class="nav-number">3.1.</span> <span class="nav-text">文档频率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#互信息"><span class="nav-number">3.2.</span> <span class="nav-text">互信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息增益"><span class="nav-number">3.3.</span> <span class="nav-text">信息增益</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卡方检验"><span class="nav-number">3.4.</span> <span class="nav-text">卡方检验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卡方检验代码实现"><span class="nav-number">3.5.</span> <span class="nav-text">卡方检验代码实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>

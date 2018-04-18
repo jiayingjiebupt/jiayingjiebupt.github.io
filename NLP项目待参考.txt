@@ -1,0 +1,6 @@
+### 待参考
+[这个网站有很多好NLP文章](https://spaces.ac.cn/category/Big-Data) 比如这篇文[本情感分类](https://spaces.ac.cn/archives/3360/comment-page-2)
+
+[LDA模型下书目信息分类系统的研究与实现](http://manu44.magtech.com.cn/Jwk_infotech_wk3/article/2014/1003-3513/1003-3513-30-5-18.html#close)    
+
+[300万知乎多标签文本分类任务经验分享（附源码）](https://blog.csdn.net/tmb8z9vdm66wh68vx1/article/details/78679672)   
